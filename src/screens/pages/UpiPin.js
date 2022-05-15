@@ -17,7 +17,7 @@ const UpiPin = ({ route, navigation }) => {
 
   const handleBtn = async () => {
     setLoader(true)
-    const data = await context.checkPin();
+    const data = await context.checkPin(context.authToken);
     const userPin = data.response;
     if(data.response === 'Server_error'){
       navigation.navigate('Error')

@@ -42,7 +42,7 @@ const Success = () => {
                         </>
                         :
                         <>
-                            <Text style={[styles.txtStyles.mainHead, styles.txtStyles.themeTxt, styles.txtStyles.fontFiraCode]}>Some internal Error occured while sending. Our best minds are working on it ..!</Text>
+                            <Text style={[styles.txtStyles.mainHead, styles.txtStyles.themeTxt, styles.txtStyles.fontFiraCode]}>Please enter a correct UPI Id. This UPI Id is not registered. ..!</Text>
                             <View style={styles.ctrStyles.container}>
                                 <TouchableOpacity style={styles.btnStyles.themeBtn} onPress={handleBtn}>
                                     <Text style={[styles.txtStyles.mainHead, styles.txtStyles.fontFiraCode, styles.txtStyles.whiteTxt, styles.txtStyles.txtCenter]}>Ok! Go Back</Text>

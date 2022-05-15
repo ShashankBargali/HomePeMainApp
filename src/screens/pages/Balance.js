@@ -19,7 +19,7 @@ const Balance = ({ navigation }) => {
   }, [])
 
   async function getBalance() {
-    const data = await context.fetchBalance();
+    const data = await context.fetchBalance(context.authToken);
     if (data.success === true) {
       setBalance(data.response)
     }

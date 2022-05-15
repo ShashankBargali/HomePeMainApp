@@ -9,6 +9,7 @@ import inpStyles from './generalStyles/inputStyles'
 import amtStyles from './HomePeStyles/AmntInpStyles'
 import balsStyles from './HomePeStyles/BalanceStyles'
 import sendStyles from './HomePeStyles/SendPageStyles'
+import loginStyles from './HomePeStyles/LoginStyles'
 
 const styles = StyleSheet.create({
     ctrStyles,
@@ -23,7 +24,8 @@ const styles = StyleSheet.create({
     inpStyles,
     amtStyles,
     balsStyles,
-    sendStyles
+    sendStyles,
+    loginStyles
 })
 
 export default styles
