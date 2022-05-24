@@ -1,5 +1,6 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 
+const { height, width } = Dimensions.get('screen')
 const ctrStyles = StyleSheet.create({
     container: {
         width: '100%',
@@ -57,7 +58,20 @@ const ctrStyles = StyleSheet.create({
     },
     bdrRds5: {
         borderRadius: 5
-    } 
+    },
+    opacityCont: {
+        height: height,
+        width: width,
+        position: 'absolute',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        zIndex: 10
+    },
+    loader: {
+        width: 200,
+        height: 200,
+        backgroundColor: 'white',
+        zIndex: -200
+    }
 })
 
 export default ctrStyles

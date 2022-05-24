@@ -1,11 +1,18 @@
-import { TouchableOpacity, Text, View, Alert } from 'react-native'
+import { TouchableOpacity, Text, View, Alert, BackHandler } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
-import React, { useState, useRef, useContext } from 'react'
+import React, { useState, useRef, useContext, useEffect } from 'react'
 import styles from '../../assets/styles';
 import AppContext from '../../context/AppContext';
 import Loader from '../components/General/Loader'
 const Login = ({ navigation }) => {
+    useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', disableBackButton);
+        return () => {
+            BackHandler.removeEventListener('hardwareBackPress', disableBackButton)
+        }
+    }, [])
+
     const pinInput1 = useRef(null);
     const pinInput2 = useRef(null);
     const context = useContext(AppContext);
@@ -13,6 +20,10 @@ const Login = ({ navigation }) => {
     const [acno, setAcno] = useState('');
     const [code, setCode] = useState('');
 
+    const disableBackButton = () => {
+        BackHandler.exitApp();
+        return true;
+    }
     const setData = async () => {
         if (acno.length !== 6 || code.length !== 4) {
             Alert.alert("Can't Login", "Please fill the acno and pin sector")
@@ -38,12 +49,12 @@ const Login = ({ navigation }) => {
     }
     return (
         <View style={styles.loginStyles.container}>
-            {loader ? <Loader/>:
+            {loader ? <Loader /> :
                 <>
-                <View style={{ width: '100%' }}>
-                    <Text style={{ textAlign: 'left', fontSize: 30, fontWeight: '500', fontFamily: 'RobotoSlab-Regular', color: 'black' }}>Login to HomePe</Text>
-                    <Text style={{ fontSize: 18, fontWeight: '400' }}>Enter your <Text style={{ color: 'hsl(136, 65%, 51%)', fontSize: 23 }}>Pay</Text><Text style={{ color: 'hsl(192, 70%, 51%)', fontSize: 23 }}>Home</Text> Account's A/c Number and Pin to Login</Text>
-                </View>
+                    <View style={{ width: '100%' }}>
+                        <Text style={{ textAlign: 'left', fontSize: 30, fontWeight: '500', fontFamily: 'RobotoSlab-Regular', color: 'black' }}>Login to HomePe</Text>
+                        <Text style={{ fontSize: 18, fontWeight: '400' }}>Enter your <Text style={{ color: 'hsl(136, 65%, 51%)', fontSize: 23 }}>Pay</Text><Text style={{ color: 'hsl(192, 70%, 51%)', fontSize: 23 }}>Home</Text> Account's A/c Number and Pin to Login</Text>
+                    </View>
                     <View style={styles.ctrStyles.faCenter}>
                         <View style={styles.ctrStyles.myContainer}>
                             <Text style={[styles.txtStyles.head2, styles.txtStyles.fontNunito, styles.txtStyles.txtCenter, styles.ctrStyles.myContainer]}>Enter Acno: </Text>
@@ -108,7 +119,8 @@ const Login = ({ navigation }) => {
                     <TouchableOpacity style={styles.loginStyles.btn} onPress={setData}>
                         <Text style={{ fontSize: 20, color: 'white', textAlign: 'center', fontFamily: 'FiraCode-Regular' }}>Login</Text>
                     </TouchableOpacity>
-                </>}
+                </>
+            }
         </View>
     )
 }

@@ -13,6 +13,7 @@ import Passbook from './src/screens/pages/Passbook';
 import NotCon from './src/screens/pages/NotCon';
 import Send from './src/screens/pages/Send';
 import Login from './src/screens/pages/Login';
+
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
                 pin: parseInt(pin)
             })
         }).catch(err => {
+            console.log(err)
             return "error";
         })
 

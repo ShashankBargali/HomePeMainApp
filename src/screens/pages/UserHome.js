@@ -20,7 +20,7 @@ const UserHome = ({ navigation }) => {
       navigation.navigate('Login')
     }
     else{
-      context.setAuthToken(token)
+      await context.setAuthToken(token)
       return;
     }
   }

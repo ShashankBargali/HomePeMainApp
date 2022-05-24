@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 const loginStyles = StyleSheet.create({
     container: {
         display: 'flex',
-        justifyContent: 'space-between',
+        // justifyContent: 'space-between',
         alignItems: 'center',
         padding: 20,
         height: '100%'

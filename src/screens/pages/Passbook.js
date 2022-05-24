@@ -4,7 +4,7 @@ import QrCodeSect from '../components/Passbook/Templates/QrCodeSect'
 import styles from '../../assets/styles'
 import StmtsSect from '../components/Passbook/Templates/StmtsSect'
 import AppContext from '../../context/AppContext'
-import Loader from '../components/General/Loader'
+import ContLoader from '../components/General/ContLoader'
 
 const Passbook = () => {
   const context = useContext(AppContext)
@@ -19,7 +19,7 @@ const Passbook = () => {
   return (
     <ScrollView style={[styles.ctrStyles.pyContainer, styles.ctrStyles.container, styles.ctrStyles.fullContainer]}>
       <QrCodeSect />
-      {trnxs.length === 0 ? <Loader /> : <StmtsSect trnxs={trnxs} urlParser={context.urlParser} />}
+      {trnxs.length === 0 ? <ContLoader /> : <StmtsSect trnxs={trnxs} urlParser={context.urlParser} />}
     </ScrollView>
   )
 }
